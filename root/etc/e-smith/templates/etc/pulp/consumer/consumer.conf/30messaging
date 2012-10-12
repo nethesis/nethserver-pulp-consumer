@@ -1,0 +1,11 @@
+# messaging
+# scheme: (tcp|ssl)
+# port: broker port
+# cacert: the CA certificate (PEM) to verify the server.
+# clientcert: The client (PEM) key & certificate.
+[messaging]
+scheme = tcp
+port = 5672
+cacert =
+clientcert =
+

@@ -1,0 +1,29 @@
+# Reboot settings:
+# permit : Permit reboots after package installs if requested.
+# delay : The reboot delay (minutes).
+[reboot]
+permit = False
+delay = 3
+
+# GPG key settings:
+# import : Permit the import of GPG keys.
+[gpg]
+permit_import = False
+
+# heartbeat settings:
+# seconds : The heartbeat interval (seconds).
+[heartbeat]
+seconds = 10
+
+# Content distribution options
+# # baseurl : The content base url
+# # keyurl : The gpg key base url
+[cds]
+baseurl = https://localhost/pulp/repos
+keyurl = http://localhost/pulp/gpg
+ksurl = http://localhost/pulp/ks
+
+# Additional directory to search for plugins
+[plugins]
+plugin_dirs = /usr/lib/pulp/consumer/plugins
+

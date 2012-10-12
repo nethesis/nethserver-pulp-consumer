@@ -1,0 +1,15 @@
+# The pulp server configuration
+#     host : The pulp server
+#     port : The port providing the RESTful API.
+#   scheme : The protocol.
+# interval : The agent update interval
+[server]
+{
+   my $server = $pulp{'server'} || 'pulp.nethesis.it';
+   my $port = $pulp{'port'} || '443';
+   $OUT.="host = $server\n";
+   $OUT.="port = $port\n";
+}
+scheme = https
+path = /pulp/api
+interval = 240

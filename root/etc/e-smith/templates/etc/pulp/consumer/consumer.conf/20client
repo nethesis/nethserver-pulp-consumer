@@ -1,0 +1,7 @@
+# General client configuration
+[client]
+repo_file = /etc/yum.repos.d/pulp.repo
+mirror_list_dir = /etc/yum.repos.d
+gpg_keys_dir = /etc/pki/pulp-gpg-keys
+cert_dir = /etc/pki/pulp/client/repo
+consumer_cert = /etc/pki/pulp/consumer/cert.pem

@@ -1,0 +1,25 @@
+#!/usr/bin/perl -w
+
+use esmith::Build::CreateLinks  qw(:all);
+use File::Path;
+
+#--------------------------------------------------
+# actions for user-create event nethserver-pulp-consumer-update
+#--------------------------------------------------
+$event = "nethserver-pulp-consumer-update";
+event_actions($event,
+              'nethserver-pulp-consumer-conf' => '20',
+    );
+event_templates($event, "/etc/pulp/pulp.conf");
+
+#--------------------------------------------------
+# actions for user-create event nethserver-pulp-consumer-uninstall
+#--------------------------------------------------
+$event = "nethserver-pulp-consumer-uninstall";
+event_actions($event,
+              'nethserver-pulp-consumer-uninstall' => '20',
+    );
+
+
+exit 0;
+

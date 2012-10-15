@@ -10,7 +10,7 @@ $event = "nethserver-pulp-consumer-update";
 event_actions($event,
               'nethserver-pulp-consumer-conf' => '20',
     );
-event_templates($event, "/etc/pulp/pulp.conf");
+event_templates($event, "/etc/pulp/consumer/consumer.conf");
 
 #--------------------------------------------------
 # actions for user-create event nethserver-pulp-consumer-uninstall

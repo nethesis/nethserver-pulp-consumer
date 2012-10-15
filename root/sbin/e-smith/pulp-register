@@ -1,0 +1,34 @@
+#!/bin/bash
+
+function show_help {
+  echo "Usage:  pulp-register <reseller_user> <reseller_pass> <LK>"
+  exit 0
+}
+
+if [ $# -lt 3 ]; then
+   show_help
+fi
+
+user=$1
+pass=$2
+LK=$3
+
+# lowercase LK
+LK=`echo $LK | tr '[:upper:]' '[:lower:]'`
+
+/usr/bin/pulp-consumer -u $user -p "$pass" consumer register --id $LK
+/usr/bin/pulp-consumer consumer bind --repoid $LK
+
+for file in `find /etc/yum.repos.d -name \*.repo -type f`; do
+   if [ `basename $file` = "pulp.repo" ]; then
+       sed -i 's/gpgcheck\s\{0,\}=\s\{0,\}0/gpgcheck=1/' $file
+       grep -q sslclientcert $file
+       if [ $? -ne 0 ]; then
+           echo >> $file
+           echo "sslclientcert=/etc/pki/pulp/client/repo/$LK/client.crt" >> $file
+       fi
+   else
+       sed -i 's/enabled\s\{0,\}=\s\{0,\}1/enabled=0/' $file
+   fi
+done
+
